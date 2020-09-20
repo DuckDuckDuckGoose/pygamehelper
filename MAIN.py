@@ -40,7 +40,7 @@ import time
 from functools import reduce
 
 
-# Constant base class used to create Constats in python
+# Constant base class used to create Constants in python
 class Const: 
     """
     forbids to overwrite existing variables 
@@ -72,6 +72,9 @@ class COLOUR(Const):
         self.Red = (255, 0, 0)
         self.Green = (0, 0, 255)
         self.Blue = (0, 255, 0)
+        self.Cyan = (0, 255, 255)
+        self.Magenta(255, 0, 255)
+        self.Yellow(255, 255, 0)
         
         # no locked attribute, means the user can add their own colours
 Colour = COLOUR()
@@ -208,7 +211,7 @@ class Window():
 
     def _render(self, delta, fps):
         self.frameCount += 1 # increment the framecount
-        self.windowSurface.fill(Colour.White) # automatically blank the screen
+        self.windowSurface.fill(Colour.Black) # automatically blank the screen
         self.boundRender(delta, fps) # call the user defined render method
         pygame.display.flip() # refresh the necessary parts of the screen (more efficient than full update)
 
@@ -268,7 +271,7 @@ class Text():
 
 def cartesian(r, phi): # r is a length, phi is an angle measured from negative y (North)
     cartesian = pygame.math.Vector2()
-    cartesian.from_polar((r, phi%360))
+    cartesian.from_polar((r, phi % 360))
     return(cartesian.x, cartesian.y) # returned as tuple in form (x component, y component)
 
 def polar(x, y): # x coord, y coord
